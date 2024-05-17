@@ -27,15 +27,15 @@ Este proyecto es una aplicación web de gestión de productos desarrollada con F
 
 ### 1. Clonar el Repositorio
 
-git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+- git clone https://github.com/tu-usuario/nombre-del-repositorio.git
 
-cd nombre-del-repositorio
+- cd nombre-del-repositorio
 
 2. Crear y Activar un Entorno Virtual
 
-python -m venv venv
+- python -m venv venv
 
-.\venv\Scripts\activate
+- .\venv\Scripts\activate
 
 3. Instalar las Dependencias
 
