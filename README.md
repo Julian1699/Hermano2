@@ -27,8 +27,7 @@ Este proyecto es una aplicación web de gestión de productos desarrollada con F
 
 ### 1. Clonar el Repositorio
 
-- git clone https://github.com/tu-usuario/nombre-del-repositorio.git
-
+- git clone https://github.com/Julian1699/Hermano2.git
 - cd nombre-del-repositorio
 
 2. Crear y Activar un Entorno Virtual
@@ -42,6 +41,8 @@ Este proyecto es una aplicación web de gestión de productos desarrollada con F
 - pip install Flask
 
 - pip install Flask-SQLAlchemy
+
+- pip install mysql-connector-python
 
 4. Configurar la Base de Datos
 
