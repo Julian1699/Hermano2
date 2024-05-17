@@ -47,7 +47,7 @@ Este proyecto es una aplicación web de gestión de productos desarrollada con F
 
 Asegúrate de que MySQL esté instalado y en ejecución. Crea una base de datos llamada hermano2.
 
-CREATE DATABASE hermano2;
+- CREATE DATABASE hermano2;
 
 5. Crear las Tablas en la Base de Datos
 
