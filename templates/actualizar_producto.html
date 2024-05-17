@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Producto</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <header class="container">
+        <div class="button-container">
+            <a href="{{ url_for('inicio') }}"><button>Inicio</button></a>
+            <a href="{{ url_for('como_funciona') }}"><button>Cómo funciona</button></a>
+            <a href="{{ url_for('informacion') }}"><button>Información general</button></a>
+            <a href="{{ url_for('contactanos') }}"><button>Contáctanos</button></a>
+        </div>
+    </header>
+    <div class="form-container">
+        <h2>Actualizar Producto</h2>
+        <form id="actualizar-producto-form" method="POST" action="{{ url_for('actualizar_producto', id=producto[0]) }}">
+            <label for="nombre">Nombre del Producto:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ producto[1] }}" required>
+            
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required>{{ producto[2] }}</textarea>
+            
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" step="0.01" value="{{ producto[3] }}" required>
+            
+            <label for="stock_inicial">Stock Inicial:</label>
+            <input type="number" id="stock_inicial" name="stock_inicial" value="{{ producto[4] }}" required>
+
+            <button type="submit">Actualizar Producto</button>
+        </form>
+    </div>
+</body>
+<footer class="footer">
+    <p>© CopyRight Itienda Col</p>
+</footer>
+</html>

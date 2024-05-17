@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Contactanos</title>
+</head>
+<body>
+    <header class="container">
+        <div class="button-container">
+            <a href="{{ url_for('inicio') }}"><button>Inicio</button></a>
+            <a href="{{ url_for('como_funciona') }}"><button>Cómo funciona</button></a>
+            <a href="{{ url_for('informacion') }}"><button>Información general</button></a>
+            <a href="{{ url_for('contactanos') }}"><button>Contáctanos</button></a>
+        </div>
+    </header>
+    <div class="content-container">
+        <div class="text-description">
+            <h1>Servicios de Programación por Ingenieros Juniors</h1>
+            <p>Somos tres ingenieros juniors apasionados por la programación y listos para llevar tus proyectos tecnológicos al siguiente nivel. Con habilidades frescas y actualizadas en desarrollo de software, nos especializamos en:</p>
+            <p><strong>Desarrollo Web:</strong> Creación de sitios web dinámicos y responsivos utilizando HTML, CSS, JavaScript y frameworks modernos como React y Vue.js.</p>
+            <p><strong>Aplicaciones Móviles:</strong> Diseño y desarrollo de aplicaciones móviles intuitivas y funcionales para iOS y Android con tecnologías como Flutter y React Native.</p>
+            <p><strong>Back-End:</strong> Implementación de robustos sistemas de back-end con Node.js, Python (Django, Flask), y bases de datos relacionales y no relacionales.</p>
+            <p>Estamos comprometidos con la entrega de soluciones eficientes y de alta calidad, adaptándonos a las necesidades específicas de cada cliente. Nos dedicamos a aprender continuamente y a aplicar las mejores prácticas en cada proyecto que emprendemos. ¡Contáctanos para llevar tu idea a la realidad digital!</p>
+        </div>        
+    
+        <div class="contact-person">
+            <img src="../static/fotos/camilo.jpg" alt="Juan Camilo Peña Erazo">
+            <h2>Juan Camilo Peña Erazo</h2>
+            <a href="https://www.linkedin.com/in/juan-camilo-pe%C3%B1a-erazo-06ba36187/">LinkedIn</a>
+        </div>
+        <div class="contact-person">
+            <img src="../static/fotos/maira.jpg" alt="Maira Alejandra Rodriguez Velasco">
+            <h2>Maira Alejandra Rodriguez Velasco</h2>
+            <a href="https://www.linkedin.com/in/maira-a-rodriguez-v-0950b420b/">LinkedIn</a>
+        </div>
+        <div class="contact-person">
+            <img src="../static/fotos/juandiego.jpg" alt="Juan Diego Garcia Viedma">
+            <h2>Juan Diego Garcia Viedma</h2>
+            <a href="https://www.linkedin.com/in/juan-diego-garc%C3%ADa-viedma-191a41249/">LinkedIn</a>
+        </div>
+    </div>    
+</body>
+</html>
+

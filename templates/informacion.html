@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Contactanos</title>
+</head>
+<body>
+    <header class="container">
+        <div class="button-container">
+            <a href="{{ url_for('inicio') }}"><button>Inicio</button></a>
+            <a href="{{ url_for('como_funciona') }}"><button>Cómo funciona</button></a>
+            <a href="{{ url_for('informacion') }}"><button>Información general</button></a>
+            <a href="{{ url_for('contactanos') }}"><button>Contáctanos</button></a>
+        </div>
+    </header>
+    <div class="content-container">
+    <section>
+        <h2>¿Qué es un Sistema de Gestión de Inventario?</h2>
+        <p>Un Sistema de Gestión de Inventario es una herramienta informática diseñada para facilitar el control y manejo eficiente de los productos de una empresa o negocio.</p>
+    </section>
+
+    <section>
+        <h2>Funciones y Beneficios</h2>
+        <ul>
+            <li><strong>Control de Existencias:</strong> Permite mantener un registro detallado de la cantidad de productos disponibles en el inventario.</li>
+            <li><strong>Organización:</strong> Facilita la clasificación y organización de los productos por categorías.</li>
+            <li><strong>Gestión de Proveedores:</strong> Permite registrar y gestionar la información de los proveedores y los productos suministrados.</li>
+            <li><strong>Seguimiento de Movimientos:</strong> Registra los movimientos de entrada y salida de productos para un seguimiento detallado.</li>
+            <li><strong>Optimización de Recursos:</strong> Contribuye a optimizar el uso de recursos al evitar la sobrecompra o la pérdida de productos.</li>
+            <li><strong>Toma de Decisiones:</strong> Proporciona información en tiempo real para tomar decisiones informadas sobre la compra, venta y distribución de productos.</li>
+        </ul>
+    </section>  
+    </div>
+</body>
+<footer class="footer">
+    <p>© CopyRight Itienda Col</p>
+</footer>
+</html>

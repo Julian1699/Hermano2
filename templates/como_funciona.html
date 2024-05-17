@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Contactanos</title>
+</head>
+<body>
+    <header class="container">
+        <div class="button-container">
+            <a href="{{ url_for('inicio') }}"><button>Inicio</button></a>
+            <a href="{{ url_for('como_funciona') }}"><button>Cómo funciona</button></a>
+            <a href="{{ url_for('informacion') }}"><button>Información general</button></a>
+            <a href="{{ url_for('contactanos') }}"><button>Contáctanos</button></a>
+        </div>
+    </header>
+    <div class="content-container">
+        <h1>Guía del Sistema de Gestión de Inventario</h1>
+        <p>Bienvenido al sistema de gestión de inventarios. A continuación, te proporcionamos una guía paso a paso sobre cómo utilizar eficazmente esta herramienta para administrar tu inventario:</p>
+
+        <h2>Paso 1: Acceso al Sistema</h2>
+        <p>Abre tu navegador web preferido e ingresa la dirección URL del sistema de gestión de inventarios en la barra de direcciones. Presiona Enter para cargar la página principal del sistema.</p>
+
+        <h2>Paso 2: Navegación</h2>
+        <p>En la parte superior de la página, encontrarás un menú de navegación con cuatro opciones: "Inicio", "Cómo funciona", "Información general" y "Contáctanos". Haz clic en cualquiera de estas opciones para obtener más información sobre el sistema.</p>
+
+        <h2>Paso 3: Registro de Producto</h2>
+        <p>Dirígete a la sección "Iniciar" en la página principal. Completa todos los campos obligatorios del formulario, incluyendo el nombre del producto, descripción, precio, stock inicial, categoría, información del proveedor y detalles de la bodega.</p>
+
+        <h2>Paso 4: Confirmación</h2>
+        <p>Una vez que hayas completado todos los campos del formulario, haz clic en el botón "Registrar Producto". El sistema procesará la información y mostrará un mensaje de confirmación en pantalla, indicando que el producto ha sido registrado exitosamente en el inventario.</p>
+
+        <h2>Paso 5: Navegación Adicional</h2>
+        <p>Explora otras secciones del sistema utilizando las opciones de navegación disponibles en el menú. Puedes acceder a información general sobre el sistema o contactar al equipo de soporte si necesitas ayuda adicional.</p>
+    </div>
+</body>
+</html>
