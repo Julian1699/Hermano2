@@ -4,7 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Producto</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-container form, .form-container a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container label, .form-container input, .form-container textarea, .form-container select, .form-container button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .form-container button {
+            width: 50%;
+        }
+    </style>
 </head>
 <body>
     <header class="container">
@@ -30,11 +55,35 @@
             <label for="stock_inicial">Stock Inicial:</label>
             <input type="number" id="stock_inicial" name="stock_inicial" required>
 
+            <label for="categoria_id">Categoría:</label>
+            <select id="categoria_id" name="categoria_id" required>
+                <option value="" disabled selected>Selecciona una categoría</option>
+                {% for categoria in categorias %}
+                <option value="{{ categoria[0] }}">{{ categoria[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="proveedor_id">Proveedor:</label>
+            <select id="proveedor_id" name="proveedor_id" required>
+                <option value="" disabled selected>Selecciona un proveedor</option>
+                {% for proveedor in proveedores %}
+                <option value="{{ proveedor[0] }}">{{ proveedor[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="bodega_id">Bodega:</label>
+            <select id="bodega_id" name="bodega_id" required>
+                <option value="" disabled selected>Selecciona una bodega</option>
+                {% for bodega in bodegas %}
+                <option value="{{ bodega[0] }}">{{ bodega[1] }}</option>
+                {% endfor %}
+            </select>
+            
+            <br></br>
             <button type="submit">Registrar Producto</button>
         </form>
+        <a href="{{ url_for('mostrar_productos') }}"><button>Volver</button></a>
     </div>
 </body>
-<footer class="footer">
-    <p>© CopyRight Itienda Col</p>
-</footer>
+<br><br>
 </html>
