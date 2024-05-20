@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Producto</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header class="container">
@@ -17,7 +17,7 @@
     </header>
     <div class="form-container">
         <h2>Actualizar Producto</h2>
-        <form id="actualizar-producto-form" method="POST" action="{{ url_for('actualizar_producto', id=producto[0]) }}">
+        <form method="POST" action="{{ url_for('actualizar_producto', id=producto[0]) }}">
             <label for="nombre">Nombre del Producto:</label>
             <input type="text" id="nombre" name="nombre" value="{{ producto[1] }}" required>
             
@@ -29,12 +29,35 @@
             
             <label for="stock_inicial">Stock Inicial:</label>
             <input type="number" id="stock_inicial" name="stock_inicial" value="{{ producto[4] }}" required>
+            
+            <label for="categoria_id">Categoría:</label>
+            <select id="categoria_id" name="categoria_id" required>
+                {% for categoria in categorias %}
+                <option value="{{ categoria[0] }}" {% if categoria[0] == producto[5] %}selected{% endif %}>{{ categoria[1] }}</option>
+                {% endfor %}
+            </select>
 
+            <label for="proveedor_id">Proveedor:</label>
+            <select id="proveedor_id" name="proveedor_id" required>
+                {% for proveedor in proveedores %}
+                <option value="{{ proveedor[0] }}" {% if proveedor[0] == producto[6] %}selected{% endif %}>{{ proveedor[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="bodega_id">Bodega:</label>
+            <select id="bodega_id" name="bodega_id" required>
+                {% for bodega in bodegas %}
+                <option value="{{ bodega[0] }}" {% if bodega[0] == producto[7] %}selected{% endif %}>{{ bodega[1] }}</option>
+                {% endfor %}
+            </select>
+            <br></br>
             <button type="submit">Actualizar Producto</button>
         </form>
+        <a href="{{ url_for('mostrar_productos') }}"><button>Volver</button></a>
     </div>
 </body>
-<footer class="footer">
+<footer>
     <p>© CopyRight Itienda Col</p>
 </footer>
 </html>
+

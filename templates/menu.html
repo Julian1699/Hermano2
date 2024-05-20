@@ -5,19 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Principal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .menu-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #4CAF50;
+        }
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+        .description {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            text-align: left;
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
     <header class="container">
         <h1>Menú Principal</h1>
     </header>
     <div class="menu-container">
-        <a href="productos"><button>Gestionar Productos</button></a>
-        <a href="proveedores"><button>Gestionar Proveedores</button></a>
-        <a href="bodegas"><button>Gestionar Bodegas</button></a>
-        <a href="categorias"><button>Gestionar Categorías</button></a>
+        <div class="description">
+            <p>Bienvenido al sistema de gestión de inventario. Aquí puedes gestionar tus productos, proveedores, bodegas y categorías de manera eficiente. Selecciona una opción para comenzar.</p>
+            <p><strong>¿Cómo funciona?</strong></p>
+            <p>Para crear un producto, primero debes asegurarte de haber registrado los proveedores, categorías y bodegas necesarias. Aquí tienes una guía rápida:</p>
+            <ul>
+                <li><strong>Gestionar Productos:</strong> Aquí puedes crear, actualizar, ver y eliminar productos en el inventario.</li>
+                <li><strong>Gestionar Proveedores:</strong> Registra los proveedores que suministran los productos. Necesitarás esta información para asignar un proveedor a un producto.</li>
+                <li><strong>Gestionar Bodegas:</strong> Define las bodegas donde se almacenarán los productos. Esto es necesario para especificar dónde se almacenará cada producto.</li>
+                <li><strong>Gestionar Categorías:</strong> Crea categorías para clasificar tus productos. Cada producto debe pertenecer a una categoría.</li>
+            </ul>
+            <p>Sigue estos pasos en orden para asegurarte de que tienes toda la información necesaria antes de crear un nuevo producto.</p>
+        </div>
+        <div class="button-container">
+            <a href="{{ url_for('mostrar_productos') }}"><button>Gestionar Productos</button></a>
+            <a href="{{ url_for('mostrar_proveedores') }}"><button>Gestionar Proveedores</button></a>
+            <a href="{{ url_for('mostrar_bodegas') }}"><button>Gestionar Bodegas</button></a>
+            <a href="{{ url_for('mostrar_categorias') }}"><button>Gestionar Categorías</button></a>
+        </div>
     </div>
+    <footer class="footer">
+        <p>© CopyRight Itienda Col</p>
+    </footer>
 </body>
-<footer class="footer">
-    <p>© CopyRight Itienda Col</p>
-</footer>
 </html>

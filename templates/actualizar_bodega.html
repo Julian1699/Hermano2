@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Bodega</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-container form, .form-container a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container label, .form-container input, .form-container button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .form-container button {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <div class="button-container">
+            <a href="{{ url_for('inicio') }}"><button>Inicio</button></a>
+            <a href="{{ url_for('mostrar_bodegas') }}"><button>Gestionar Bodegas</button></a>
+        </div>
+    </header>
+    <div class="form-container">
+        <h2>Actualizar Bodega</h2>
+        <form method="POST" action="{{ url_for('actualizar_bodega', id=bodega[0]) }}">
+            <label for="nombre">Nombre de la Bodega:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ bodega[1] }}" required>
+            
+            <label for="ubicacion">Ubicación:</label>
+            <input type="text" id="ubicacion" name="ubicacion" value="{{ bodega[2] }}" required>
+            
+            <label for="capacidad_maxima">Capacidad Máxima:</label>
+            <input type="number" id="capacidad_maxima" name="capacidad_maxima" value="{{ bodega[3] }}" required>
+            
+            <button type="submit">Actualizar Bodega</button>
+        </form>
+        <a href="{{ url_for('mostrar_bodegas') }}"><button>Volver</button></a>
+    </div>
+</body>
+<footer class="footer">
+    <p>© CopyRight Itienda Col</p>
+</footer>
+</html>
