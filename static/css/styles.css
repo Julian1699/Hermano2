@@ -14,76 +14,10 @@ body {
     border-radius: 5px;
 }
 
-h1 {
-    text-align: center;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-}
-
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-.welcome-container {
-    text-align: center;
-    margin: 20% auto;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 1em;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Agrega una transición suave al cambio de color */
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-.footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: rgba(76, 175, 80, 0.5); /* 50% de opacidad */
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 .header, .footer {
     text-align: center;
     padding: 20px 0;
-    background-color: rgba(76, 175, 80, 0.5); /* 50% de opacidad */
+    background-color: rgba(76, 175, 80, 0.5);
     color: white;
     position: fixed;
     width: 100%;
@@ -97,17 +31,92 @@ button:hover {
     bottom: 0;
 }
 
+h1, h2, h3 {
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"], 
+button {
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 1em;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover, 
+button:hover {
+    background-color: #45a049;
+}
+
+.welcome-container {
+    text-align: center;
+    margin: 20% auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.button-container a button {
+    margin: 5px;
+    background-color: #4CAF50;
+}
+
+.button-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: white;
+    color: #4CAF50;
+}
+
 .contact-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px;
-    background-color: #e0f2e9; /* Color de fondo verde claro */
-    border-radius: 10px; /* Bordes redondeados */
+    background-color: #e0f2e9;
+    border-radius: 10px;
+    flex-direction: column;
 }
 
 .contact-person {
     text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contact-person img {
@@ -115,11 +124,7 @@ button:hover {
     height: 150px;
     border-radius: 50%;
     margin-bottom: 10px;
-}
-
-.contact-person h2 {
-    margin: 0;
-    font-size: 1.2em;
+    border: 4px solid rgba(0, 0, 0, 0.1);
 }
 
 .contact-person a {
@@ -129,51 +134,9 @@ button:hover {
     color: blue;
 }
 
-.contact-container {
-    text-align: center;
-    height: 100vh; /* Ajusta la altura del contenedor para centrar verticalmente */
-}
-
-.contact-container h1 {
-    margin-bottom: 20px; /* Espacio entre el título y los contactanoss */
-}
-
-.contact-person {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.text-description {
+    text-align: justify;
     margin-bottom: 20px;
-}
-
-.contact-person img {
-    width: 150px; /* Ajusta el tamaño de la imagen */
-    border-radius: 50%; /* Hace que la imagen sea circular */
-    border: 4px solid rgba(0, 0, 0, 0.1); /* Añade un borde con transparencia */
-}
-
-.contact-person h2 {
-    margin: 10px 0;
-}
-
-.contact-person a {
-    color: blue;
-    text-decoration: none;
-}
-
-.button-container button {
-    margin: 5px;
-    padding: 10px 20px;
-    color: white;
-    background-color: #4CAF50;
-    border: 2px solid #4CAF50; /* Cuadro alrededor del botón */
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
-}
-
-.button-container button:hover {
-    background-color: white; /* Fondo blanco al pasar el cursor */
-    color: #4CAF50; /* Texto verde al pasar el cursor */
 }
 
 .form-container {
@@ -196,76 +159,79 @@ label {
     color: #333;
 }
 
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.container {
-    background-color: rgba(76, 175, 80, 0.5); /* 50% de opacidad */ 
-}
-
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.text-description {
-    text-align: center;
-    margin-bottom: 20px; /* Espacio entre el texto y las imágenes */
-}
-
-.contact-person {
-    text-align: center;
-    margin-bottom: 20px; /* Espacio entre las imágenes */
-}
-
 .content-container {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra */
-    max-width: 800px; /* Limita el ancho del contenedor */
-    margin: auto; /* Centra horizontalmente */
-}
-
-.text-description {
-    text-align: center;
-    margin-bottom: 20px; /* Espacio entre el texto y las imágenes */
-}
-
-.contact-person {
-    text-align: center;
-    margin-bottom: 20px; /* Espacio entre las imágenes */
-}
-
-.contact-person img {
-    display: block; /* Asegura que las imágenes estén centradas horizontalmente */
-    margin: auto; /* Centra horizontalmente */
-}
-
-.text-description {
-    text-align: justify;
-}
-
-h3 {
-    text-align: center;
-    color: white; /* Cambiar el color del texto a blanco */
-    text-shadow: 1px 1px 1px black; /* Agregar un delineado negro */
-}
-
-.form-container {
-    padding: 20px;
-    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
 }
 
 .sub-container {
-    background-color: rgba(76, 175, 80, 0.5); /* 50% de opacidad */ 
+    background-color: rgba(76, 175, 80, 0.5);
     padding: 20px;
     border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Botones específicos para acciones */
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin: 5px;
+}
+
+.btn-detail {
+    background-color: #2196F3;
+}
+
+.btn-detail:hover {
+    background-color: #0b7dda;
+}
+
+.btn-edit {
+    background-color: #FFEB3B;
+    color: black;
+}
+
+.btn-edit:hover {
+    background-color: #fbc02d;
+}
+
+.btn-delete {
+    background-color: #f44336;
+}
+
+.btn-delete:hover {
+    background-color: #da190b;
 }

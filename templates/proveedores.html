@@ -5,67 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Proveedores</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
-        .content-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 1000px;
-            margin: auto;
-        }
-        .button-container a button,
-        .new-item-button a button,
-        table td a button,
-        table td form button {
-            padding: 10px 20px;
-            font-size: 1em;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: inline-block;
-            margin: 5px;
-        }
-        .new-item-button a button {
-            background-color: #4CAF50;
-        }
-        .new-item-button a button:hover {
-            background-color: #45a049;
-        }
-        table td a button {
-            background-color: #2196F3;
-        }
-        table td a button:hover {
-            background-color: #0b7dda;
-        }
-        table td form button {
-            background-color: #f44336;
-        }
-        table td form button:hover {
-            background-color: #da190b;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        table th {
-            background-color: #f2f2f2;
-        }
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        table tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
 <body>
     <header class="container">
@@ -99,10 +38,10 @@
                     <td>{{ proveedor[2] }}</td>
                     <td>{{ proveedor[3] }}</td>
                     <td>
-                        <a href="{{ url_for('consultar_proveedor', id=proveedor[0]) }}"><button>Ver Detalle</button></a>
-                        <a href="{{ url_for('mostrar_formulario_actualizacion_proveedor', id=proveedor[0]) }}"><button>Editar</button></a>
+                        <a href="{{ url_for('consultar_proveedor', id=proveedor[0]) }}"><button class="btn btn-detail">Ver Detalle</button></a>
+                        <a href="{{ url_for('mostrar_formulario_actualizacion_proveedor', id=proveedor[0]) }}"><button class="btn btn-edit">Editar</button></a>
                         <form action="{{ url_for('borrar_proveedor', id=proveedor[0]) }}" method="post" style="display:inline;">
-                            <button type="submit">Borrar</button>
+                            <button type="submit" class="btn btn-delete">Borrar</button>
                         </form>
                     </td>
                 </tr>
