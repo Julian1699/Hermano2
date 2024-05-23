@@ -1,17 +1,19 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-import mysql.connector
+from flask import Flask, render_template, request, redirect, flash, url_for
+import psycopg2
+from psycopg2 import sql
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'supersecretkey'
+app.config['SECRET_KEY'] = 'supersecrectkey'
 
 # Conexión a la base de datos
 def obtener_conexion():
-    return mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='123456789',
-        database='hermano2'
-    )
+    try:
+        conn = psycopg2.connect(os.getenv('DATABASE_URL', 'postgresql://postgres:123456@db-postgres:5432/tryapi'))
+        return conn
+    except psycopg2.DatabaseError as e:
+        print(f"Error al conectar a la base de datos: {e}")
+        raise
 
 # Ruta para la página de inicio
 @app.route('/')
@@ -52,7 +54,7 @@ def mostrar_productos():
         valor_total_stock = cursor.fetchone()[0] or 0
         
         return render_template('productos.html', productos=productos, valor_total_stock=valor_total_stock)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar los datos:", error)
         flash("Error al cargar los datos")
         return render_template('productos.html', productos=[], valor_total_stock=0)
@@ -77,7 +79,7 @@ def mostrar_formulario_creacion():
         bodegas = cursor.fetchall()
         
         return render_template('crear_producto.html', categorias=categorias, proveedores=proveedores, bodegas=bodegas)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar los datos:", error)
         flash("Error al cargar los datos")
         return render_template('crear_producto.html', categorias=[], proveedores=[], bodegas=[])
@@ -106,7 +108,7 @@ def crear_producto():
 
         flash('Producto creado correctamente')
         return redirect(url_for('mostrar_productos'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al crear el producto:", error)
         flash("Error al crear el producto")
         return redirect(url_for('mostrar_formulario_creacion'))
@@ -134,7 +136,7 @@ def mostrar_formulario_actualizacion(id):
         bodegas = cursor.fetchall()
         
         return render_template('actualizar_producto.html', producto=producto, categorias=categorias, proveedores=proveedores, bodegas=bodegas)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar el producto:", error)
         flash("Error al cargar el producto")
         return redirect(url_for('mostrar_productos'))
@@ -165,7 +167,7 @@ def actualizar_producto(id):
 
         flash('Producto actualizado correctamente')
         return redirect(url_for('mostrar_productos'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al actualizar el producto:", error)
         flash("Error al actualizar el producto")
         return redirect(url_for('mostrar_formulario_actualizacion', id=id))
@@ -189,7 +191,7 @@ def borrar_producto(id):
 
         flash('Producto borrado correctamente')
         return redirect(url_for('mostrar_productos'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al borrar el producto:", error)
         flash("Error al borrar el producto")
         return redirect(url_for('mostrar_productos'))
@@ -206,7 +208,7 @@ def mostrar_proveedores():
         cursor.execute("SELECT * FROM Proveedores")
         proveedores = cursor.fetchall()
         return render_template('proveedores.html', proveedores=proveedores)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar los datos:", error)
         flash("Error al cargar los datos")
         return render_template('proveedores.html', proveedores=[])
@@ -233,7 +235,7 @@ def crear_proveedor():
 
         flash('Proveedor creado correctamente')
         return redirect(url_for('mostrar_proveedores'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al crear el proveedor:", error)
         flash("Error al crear el proveedor")
         return redirect(url_for('mostrar_formulario_creacion_proveedor'))
@@ -249,7 +251,7 @@ def mostrar_formulario_actualizacion_proveedor(id):
         cursor.execute("SELECT * FROM Proveedores WHERE id = %s", (id,))
         proveedor = cursor.fetchone()
         return render_template('actualizar_proveedor.html', proveedor=proveedor)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar el proveedor:", error)
         flash("Error al cargar el proveedor")
         return redirect(url_for('mostrar_proveedores'))
@@ -272,7 +274,7 @@ def actualizar_proveedor(id):
 
         flash('Proveedor actualizado correctamente')
         return redirect(url_for('mostrar_proveedores'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al actualizar el proveedor:", error)
         flash("Error al actualizar el proveedor")
         return redirect(url_for('mostrar_formulario_actualizacion_proveedor', id=id))
@@ -290,7 +292,7 @@ def borrar_proveedor(id):
 
         flash('Proveedor borrado correctamente')
         return redirect(url_for('mostrar_proveedores'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al borrar el proveedor:", error)
         flash("Error al borrar el proveedor")
         return redirect(url_for('mostrar_proveedores'))
@@ -307,7 +309,7 @@ def mostrar_bodegas():
         cursor.execute("SELECT * FROM Bodegas")
         bodegas = cursor.fetchall()
         return render_template('bodegas.html', bodegas=bodegas)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar los datos:", error)
         flash("Error al cargar los datos")
         return render_template('bodegas.html', bodegas=[])
@@ -334,7 +336,7 @@ def crear_bodega():
 
         flash('Bodega creada correctamente')
         return redirect(url_for('mostrar_bodegas'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al crear la bodega:", error)
         flash("Error al crear la bodega")
         return redirect(url_for('mostrar_formulario_creacion_bodega'))
@@ -350,7 +352,7 @@ def mostrar_formulario_actualizacion_bodega(id):
         cursor.execute("SELECT * FROM Bodegas WHERE id = %s", (id,))
         bodega = cursor.fetchone()
         return render_template('actualizar_bodega.html', bodega=bodega)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar la bodega:", error)
         flash("Error al cargar la bodega")
         return redirect(url_for('mostrar_bodegas'))
@@ -373,7 +375,7 @@ def actualizar_bodega(id):
 
         flash('Bodega actualizada correctamente')
         return redirect(url_for('mostrar_bodegas'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al actualizar la bodega:", error)
         flash("Error al actualizar la bodega")
         return redirect(url_for('mostrar_formulario_actualizacion_bodega', id=id))
@@ -391,7 +393,7 @@ def borrar_bodega(id):
 
         flash('Bodega borrada correctamente')
         return redirect(url_for('mostrar_bodegas'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al borrar la bodega:", error)
         flash("Error al borrar la bodega")
         return redirect(url_for('mostrar_bodegas'))
@@ -408,7 +410,7 @@ def mostrar_categorias():
         cursor.execute("SELECT * FROM Categorias")
         categorias = cursor.fetchall()
         return render_template('categorias.html', categorias=categorias)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar los datos:", error)
         flash("Error al cargar los datos")
         return render_template('categorias.html', categorias=[])
@@ -434,7 +436,7 @@ def crear_categoria():
 
         flash('Categoría creada correctamente')
         return redirect(url_for('mostrar_categorias'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al crear la categoría:", error)
         flash("Error al crear la categoría")
         return redirect(url_for('mostrar_formulario_creacion_categoria'))
@@ -450,7 +452,7 @@ def mostrar_formulario_actualizacion_categoria(id):
         cursor.execute("SELECT * FROM Categorias WHERE id = %s", (id,))
         categoria = cursor.fetchone()
         return render_template('actualizar_categoria.html', categoria=categoria)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar la categoría:", error)
         flash("Error al cargar la categoría")
         return redirect(url_for('mostrar_categorias'))
@@ -472,7 +474,7 @@ def actualizar_categoria(id):
 
         flash('Categoría actualizada correctamente')
         return redirect(url_for('mostrar_categorias'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al actualizar la categoría:", error)
         flash("Error al actualizar la categoría")
         return redirect(url_for('mostrar_formulario_actualizacion_categoria', id=id))
@@ -490,7 +492,7 @@ def borrar_categoria(id):
 
         flash('Categoría borrada correctamente')
         return redirect(url_for('mostrar_categorias'))
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al borrar la categoría:", error)
         flash("Error al borrar la categoría")
         return redirect(url_for('mostrar_categorias'))
@@ -513,7 +515,7 @@ def consultar_categoria(id):
         productos = cursor.fetchall()
         
         return render_template('categoria_detalle.html', categoria=categoria, productos=productos)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar la categoría:", error)
         flash("Error al cargar la categoría")
         return redirect(url_for('mostrar_categorias'))
@@ -536,7 +538,7 @@ def consultar_proveedor(id):
         productos = cursor.fetchall()
         
         return render_template('proveedor_detalle.html', proveedor=proveedor, productos=productos)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar el proveedor:", error)
         flash("Error al cargar el proveedor")
         return redirect(url_for('mostrar_proveedores'))
@@ -558,7 +560,7 @@ def consultar_bodega(id):
         productos = cursor.fetchall()
         
         return render_template('bodega_detalle.html', bodega=bodega, productos=productos)
-    except mysql.connector.Error as error:
+    except psycopg2.Error as error:
         print("Error al cargar la bodega:", error)
         flash("Error al cargar la bodega")
         return redirect(url_for('mostrar_bodegas'))
@@ -569,4 +571,4 @@ def consultar_bodega(id):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')

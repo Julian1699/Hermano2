@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    container_name: db-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: tryapi
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: flask-app
+    command: ["flask", "run", "--host=0.0.0.0"]
+    environment:
+      FLASK_ENV: development
+      DATABASE_URL: postgresql://postgres:123456@db-postgres:5432/tryapi
+      FLASK_APP: main.py
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
