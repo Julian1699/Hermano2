@@ -23,8 +23,8 @@ Este proyecto es una aplicación web de gestión de productos desarrollada con F
 
 ## Requisitos
 
-- **Python 3.6+**
-- **MySQL**
+- **Docker**
+- **Docker Compose**
 
 ## Instalación y Configuración
 
@@ -34,37 +34,13 @@ Este proyecto es una aplicación web de gestión de productos desarrollada con F
 
 - cd nombre-del-repositorio
 
-### 2. Crear y Activar un Entorno Virtual
+### 2. Ejecutar Docker Compose
 
-python -m venv venv
+docker-compose up --build
 
-.\venv\Scripts\activate
+### 3. Acceder a la Aplicación.
 
-### 3. Instalar las Dependencias
-
-pip install Flask
-pip install Flask-SQLAlchemy
-pip install mysql-connector-python
-
-### 4. Configurar la Base de Datos
-
-Asegúrate de que MySQL esté instalado y en ejecución. Crea una base de datos llamada hermano2.
-
-CREATE DATABASE hermano2;
-
-### 5. Crear las Tablas en la Base de Datos
-
-Ejecuta el script crear_db.py para crear las tablas necesarias en la base de datos.
-
-python crear_db.py
-
-### 6. Ejecutar la Aplicación
-
-Finalmente, ejecuta la aplicación Flask.
-
-python main.py
-
-La aplicación estará disponible en http://127.0.0.1:5000.
+La aplicación estará disponible en http://localhost:5000.
 
 ### Uso de la Aplicación
 
