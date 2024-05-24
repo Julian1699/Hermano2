@@ -1,0 +1,5 @@
+# Trata todos los archivos de texto como texto y normaliza los terminadores de línea a LF
+* text=auto
+
+# Fuerza los archivos shell script a usar terminadores de línea LF
+*.sh text eol=lf
